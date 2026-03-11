@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janhavi Mali | Software Developer</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            orange: '#ff5722',
+                            orangeLight: '#ff8a65',
+                            dark: '#050505',
+                            darker: '#000000',
+                            gray: '#111111',
+                            text: '#a1a1aa'
+                        }
+                    },
+                    boxShadow: {
+                        'neon': '0 0 50px -10px rgba(255, 87, 34, 0.5)',
+                        'neon-strong': '0 0 80px 0px rgba(255, 87, 34, 0.6)',
+                        'light-neon': '0 0 50px -10px rgba(255, 87, 34, 0.4)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; transition: background-color 0.4s ease, color 0.4s ease; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif; }
+        
+        .gradient-text { 
+            background: linear-gradient(135deg, #ff5722, #ffb74d); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            background-clip: text;
+        }
+        
+        /* Glow settings for dark and light modes */
+        .glow-circle { 
+            border-radius: 50%; 
+            transition: all 0.4s ease;
+        }
+        
+        /* Consistent strong orange shadow for both light and dark mode */
+        .dark .glow-circle {
+            box-shadow: 0 0 60px 15px rgba(255, 87, 34, 0.45); 
+            background: rgba(255, 87, 34, 0.1);
+        }
+        .glow-circle { 
+            box-shadow: 0 0 60px 15px rgba(255, 87, 34, 0.45); 
+            background: rgba(255, 87, 34, 0.1);
+        }
+
+        .progress-bar-fill { height: 100%; border-radius: 9999px; background: linear-gradient(90deg, #ff5722 0%, #ff8a65 100%); transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1); }
+        
+        /* Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #ff5722; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #e64a19; }
+
+        /* Skill Tags */
+        .skill-tag {
+            transition: all 0.3s ease;
+        }
+        .skill-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(255, 87, 34, 0.2);
+            border-color: #ff5722;
+            color: #ff5722;
+        }
+    </style>
+</head>
+<body class="antialiased bg-slate-50 text-gray-800 dark:bg-brand-darker dark:text-white selection:bg-brand-orange selection:text-white transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 border-b border-gray-200 dark:bg-black/80 dark:border-white/10 backdrop-blur-lg transition-colors duration-300 py-3 md:py-4 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center transition-colors font-heading">
+                Janhavi<span class="text-brand-orange">.</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                <a href="#home" class="text-sm font-medium text-brand-orange border-b-2 border-brand-orange pb-1">Home</a>
+                <a href="#about" class="text-sm font-medium text-gray-600 hover:text-brand-orange dark:text-gray-400 dark:hover:text-white transition-colors">About</a>
+                <a href="#skills" class="text-sm font-medium text-gray-600 hover:text-brand-orange dark:text-gray-400 dark:hover:text-white transition-colors">Skills</a>
+                <a href="#projects" class="text-sm font-medium text-gray-600 hover:text-brand-orange dark:text-gray-400 dark:hover:text-white transition-colors">Projects</a>
+                <a href="#education" class="text-sm font-medium text-gray-600 hover:text-brand-orange dark:text-gray-400 dark:hover:text-white transition-colors">Education</a>
+                <a href="#achievements" class="text-sm font-medium text-gray-600 hover:text-brand-orange dark:text-gray-400 dark:hover:text-white transition-colors">Achievements</a>
+                <a href="#contact" class="text-sm font-medium text-gray-600 hover:text-brand-orange dark:text-gray-400 dark:hover:text-white transition-colors">Contact</a>
+                
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="p-2 ml-2 rounded-full focus:outline-none transition-colors dark:text-brand-orange text-brand-orange bg-orange-50 hover:bg-orange-100 dark:bg-gray-800 dark:hover:bg-gray-700 shadow-sm cursor-pointer border border-orange-100 dark:border-gray-700">
+                    <i id="theme-toggle-light-icon" class="fas fa-sun hidden text-lg w-5 h-5 flex items-center justify-center"></i>
+                    <i id="theme-toggle-dark-icon" class="fas fa-moon hidden text-lg w-5 h-5 flex items-center justify-center"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu & Theme Toggle -->
+            <div class="md:hidden flex items-center gap-3">
+                <button id="theme-toggle-mobile" class="p-2 rounded-full focus:outline-none transition-colors dark:text-brand-orange text-brand-orange bg-orange-50 hover:bg-orange-100 dark:bg-gray-800 dark:hover:bg-gray-700 shadow-sm border border-orange-100 dark:border-gray-700">
+                    <i id="theme-toggle-light-icon-mobile" class="fas fa-sun hidden w-4 h-4 flex items-center justify-center"></i>
+                    <i id="theme-toggle-dark-icon-mobile" class="fas fa-moon hidden w-4 h-4 flex items-center justify-center"></i>
+                </button>
+                <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-400 hover:text-brand-orange focus:outline-none text-2xl p-1">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-black border-t border-gray-200 dark:border-white/10 absolute w-full transition-colors duration-300 shadow-xl overflow-y-auto max-h-[80vh]">
+            <div class="px-4 pt-2 pb-6 space-y-2 text-center flex flex-col mt-2">
+                <a href="#about" class="mobile-link block px-3 py-2 text-base font-medium text-gray-600 hover:text-brand-orange hover:bg-orange-50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-900 rounded-md transition-colors">About</a>
+                <a href="#skills" class="mobile-link block px-3 py-2 text-base font-medium text-gray-600 hover:text-brand-orange hover:bg-orange-50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-900 rounded-md transition-colors">Skills</a>
+                <a href="#projects" class="mobile-link block px-3 py-2 text-base font-medium text-gray-600 hover:text-brand-orange hover:bg-orange-50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-900 rounded-md transition-colors">Projects</a>
+                <a href="#education" class="mobile-link block px-3 py-2 text-base font-medium text-gray-600 hover:text-brand-orange hover:bg-orange-50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-900 rounded-md transition-colors">Education</a>
+                <a href="#achievements" class="mobile-link block px-3 py-2 text-base font-medium text-gray-600 hover:text-brand-orange hover:bg-orange-50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-900 rounded-md transition-colors">Achievements</a>
+                <a href="#contact" class="mobile-link block px-3 py-2 text-base font-medium text-gray-600 hover:text-brand-orange hover:bg-orange-50 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-900 rounded-md transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-32 min-h-screen flex items-center bg-slate-50 dark:bg-brand-darker transition-colors duration-300 relative overflow-hidden">
+        <!-- Abstract background blobs -->
+        <div class="absolute top-20 left-10 w-64 h-64 bg-brand-orange/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse-slow dark:bg-brand-orange/20 dark:mix-blend-lighten"></div>
+        <div class="absolute bottom-20 right-10 w-72 h-72 bg-brand-orange/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse-slow dark:bg-brand-orange/10 dark:mix-blend-lighten" style="animation-delay: 2s;"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center relative z-10 w-full">
+            <div class="reveal-left order-2 md:order-1 text-center md:text-left mt-8 md:mt-0">
+                <p class="text-gray-600 dark:text-gray-400 font-bold tracking-widest text-sm uppercase mb-4 transition-colors">HELLO!</p>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-gray-900 dark:text-white transition-colors leading-tight">
+                    I'm <span class="gradient-text whitespace-nowrap">Janhavi Mali</span>
+                </h1>
+                <h2 class="text-xl sm:text-2xl md:text-3xl text-brand-orange font-medium mb-6 font-heading">Software Developer</h2>
+                <p class="text-gray-600 dark:text-brand-text mb-8 leading-relaxed max-w-lg transition-colors text-base sm:text-lg mx-auto md:mx-0">
+                    Certified PG-DAC Software Developer with hands-on experience in Java, Spring Boot, .NET (C#), REST APIs, and SQL databases. Building scalable and secure applications.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-10 justify-center md:justify-start">
+                    <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 bg-brand-orange text-white rounded-full font-medium shadow-light-neon dark:shadow-neon hover:-translate-y-1 transform transition-all duration-300 text-center">
+                        Let's talk
+                    </a>
+                    
+                    <div class="flex space-x-4 mt-4 sm:mt-0">
+                        <a href="https://github.com" target="_blank" class="w-11 h-11 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 flex items-center justify-center hover:border-brand-orange hover:bg-brand-orange hover:text-white dark:hover:border-brand-orange transform hover:scale-110 transition-all duration-300 bg-white dark:bg-transparent shadow-sm"><i class="fab fa-github text-lg"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="w-11 h-11 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 flex items-center justify-center hover:border-brand-orange hover:bg-brand-orange hover:text-white dark:hover:border-brand-orange transform hover:scale-110 transition-all duration-300 bg-white dark:bg-transparent shadow-sm"><i class="fab fa-linkedin-in text-lg"></i></a>
+                        <a href="mailto:malijanvi54@gmail.com" class="w-11 h-11 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 flex items-center justify-center hover:border-brand-orange hover:bg-brand-orange hover:text-white dark:hover:border-brand-orange transform hover:scale-110 transition-all duration-300 bg-white dark:bg-transparent shadow-sm"><i class="fas fa-envelope text-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="relative flex justify-center reveal-right order-1 md:order-2">
+                <div class="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[420px] lg:h-[420px] rounded-full glow-circle overflow-hidden border-[4px] md:border-[6px] border-white dark:border-brand-orange/30 relative z-10 animate-float bg-gray-200 dark:bg-gray-800">
+                     <img src="janhavi.png.png" alt="Janhavi Mali" class="w-full h-full object-cover object-top hover:scale-110 transition-transform duration-700" onerror="this.src='https://ui-avatars.com/api/?name=Janhavi+Mali&size=400&background=ff5722&color=fff'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white dark:bg-brand-dark transition-colors duration-300 border-y border-gray-100 dark:border-white/5 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <p class="text-brand-orange font-medium tracking-widest text-sm uppercase mb-2">Discover</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-gray-900 dark:text-white transition-colors">About <span class="text-brand-orange">Me</span></h2>
+            
+            <div class="flex justify-center mb-10">
+                <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-full border-[4px] border-white dark:border-brand-gray shadow-light-neon dark:shadow-neon overflow-hidden relative ring-2 ring-brand-orange/50">
+                    <img src="janhavi.png.png" alt="Janhavi Mali" class="w-full h-full object-cover object-top hover:scale-110 transition-transform duration-700" onerror="this.src='https://ui-avatars.com/api/?name=Janhavi+Mali&size=250&background=ff5722&color=fff'">
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white transition-colors font-heading">Software Developer</h3>
+            <p class="text-gray-600 dark:text-brand-text mb-8 leading-relaxed transition-colors text-base sm:text-lg max-w-3xl mx-auto">
+                Passionate about building scalable enterprise applications and solving real-world problems through efficient software design. Seeking an entry-level Software Engineer role to utilize my skills and build secure, high-performance enterprise applications. Highly dedicated and eager to learn new technologies.
+            </p>
+            <a href="#contact" class="inline-block px-10 py-3.5 bg-gradient-to-r from-brand-orange to-brand-orangeLight text-white rounded-full font-medium shadow-light-neon dark:shadow-neon hover:-translate-y-1 hover:shadow-lg transform transition-all duration-300">
+                Hire Me
+            </a>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-slate-50 dark:bg-brand-darker transition-colors duration-300">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-brand-orange font-medium tracking-widest text-sm uppercase mb-2 text-center">Expertise</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white transition-colors reveal">My <span class="text-brand-orange">Skills</span></h2>
+            
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
+                <!-- Progress Bars -->
+                <div class="space-y-8">
+                    <!-- Skill 1 -->
+                    <div class="reveal">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm font-bold tracking-wider text-gray-800 dark:text-gray-300 transition-colors">JAVA & SPRING BOOT</span>
+                            <span class="text-sm font-bold text-brand-orange">90%</span>
+                        </div>
+                        <div class="h-3 w-full bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden shadow-inner transition-colors">
+                            <div class="progress-bar-fill w-0" data-width="90%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 2 -->
+                    <div class="reveal" style="transition-delay: 100ms;">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm font-bold tracking-wider text-gray-800 dark:text-gray-300 transition-colors">.NET CORE & MVC</span>
+                            <span class="text-sm font-bold text-brand-orange">85%</span>
+                        </div>
+                        <div class="h-3 w-full bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden shadow-inner transition-colors">
+                            <div class="progress-bar-fill w-0" data-width="85%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 3 -->
+                    <div class="reveal" style="transition-delay: 200ms;">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm font-bold tracking-wider text-gray-800 dark:text-gray-300 transition-colors">SQL DATABASES</span>
+                            <span class="text-sm font-bold text-brand-orange">80%</span>
+                        </div>
+                        <div class="h-3 w-full bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden shadow-inner transition-colors">
+                            <div class="progress-bar-fill w-0" data-width="80%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 4 -->
+                    <div class="reveal" style="transition-delay: 300ms;">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm font-bold tracking-wider text-gray-800 dark:text-gray-300 transition-colors">WEB TECHNOLOGIES (HTML/CSS)</span>
+                            <span class="text-sm font-bold text-brand-orange">85%</span>
+                        </div>
+                        <div class="h-3 w-full bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden shadow-inner transition-colors">
+                            <div class="progress-bar-fill w-0" data-width="85%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Tags -->
+                <div class="space-y-6">
+                    <div class="reveal" style="transition-delay: 100ms;">
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2"><i class="fas fa-code text-brand-orange"></i> Languages</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag px-3 py-1.5 bg-white dark:bg-brand-gray border border-gray-200 dark:border-gray-800 rounded-md text-sm text-gray-700 dark:text-gray-300 shadow-sm font-medium">Java</span>
+                            <span class="skill-tag px-3 py-1.5 bg-white dark:bg-brand-gray border border-gray-200 dark:border-gray-800 rounded-md text-sm text-gray-700 dark:text-gray-300 shadow-sm font-medium">C#</span>
+                            <span class="skill-tag px-3 py-1.5 bg-white dark:bg-brand-gray border border-gray-200 dark:border-gray-800 rounded-md text-sm text-gray-700 dark:text-gray-300 shadow-sm font-medium">C++</span>
+                            <span class="skill-tag px-3 py-1.5 bg-white dark:bg-brand-gray border border-gray-200 dark:border-gray-800 rounded-md text-sm text-gray-700 dark:text-gray-300 shadow-sm font-medium">HTML5</span>
+                            <span class="skill-tag px-3 py-1.5 bg-white dark:bg-brand-gray border border-gray-200 dark:border-gray-800 rounded-md text-sm text-gray-700 dark:text-gray-300 shadow-sm font-medium">CSS</span>
+                        </div>
+                    </div>
+
+                    <div class="reveal" style="transition-delay: 200ms;">
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-3 mt-6 flex items-center gap-2"><i class="fas fa-layer-group text-brand-orange"></i> Frameworks & Tech</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag px-3 py-1.5 bg-white dark:bg-brand-gray border border-gray-200 dark:border-gray-800 rounded-md text-sm text-gray-700 dark:text-gray-300 shadow-sm font-medium">Spring Boot</span>
+                            <span class="skill-tag px-3 py-1.5 bg-white dark:bg-brand-gray border border-gray-200 dark:border-gray-800 rounded-md text-sm text-gray-700 dark:text-gray-300 shadow-sm font-medium">Spring MVC</span>
+                            <span class="skill-tag px-3 py-1.5 bg-white dark:bg-brand-gray border border-gray-200 dark:border-gray-800 rounded-md text-sm text-gray-700 dark:text-gray-300 shadow-sm font-medium">Hibernate</span>
+                            <span class="skill-tag px-3 py-1.5 bg-white dark:bg-brand-gray border border-gray-200 dark:border-gray-800 rounded-md text-sm text-gray-700 dark:text-gray-300 shadow-sm font-medium">.NET Core</span>
+                            <span class="skill-tag px-3 py-1.5 bg-white dark:bg-brand-gray border border-gray-200 dark:border-gray-800 rounded-md text-sm text-gray-700 dark:text-gray-300 shadow-sm font-medium">ASP.NET Core</span>
+                            <span class="skill-tag px-3 py-1.5 bg-white dark:bg-brand-gray border border-gray-200 dark:border-gray-800 rounded-md text-sm text-gray-700 dark:text-gray-300 shadow-sm font-medium">REST APIs</span>
+                            <span class="skill-tag px-3 py-1.5 bg-white dark:bg-brand-gray border border-gray-200 dark:border-gray-800 rounded-md text-sm text-gray-700 dark:text-gray-300 shadow-sm font-medium">JDBC / JSP</span>
+                        </div>
+                    </div>
+
+                    <div class="reveal" style="transition-delay: 300ms;">
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-3 mt-6 flex items-center gap-2"><i class="fas fa-wrench text-brand-orange"></i> Tools & Concepts</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag px-3 py-1.5 bg-white dark:bg-brand-gray border border-gray-200 dark:border-gray-800 rounded-md text-sm text-gray-700 dark:text-gray-300 shadow-sm font-medium">Selenium</span>
+                            <span class="skill-tag px-3 py-1.5 bg-white dark:bg-brand-gray border border-gray-200 dark:border-gray-800 rounded-md text-sm text-gray-700 dark:text-gray-300 shadow-sm font-medium">TestNG</span>
+                            <span class="skill-tag px-3 py-1.5 bg-white dark:bg-brand-gray border border-gray-200 dark:border-gray-800 rounded-md text-sm text-gray-700 dark:text-gray-300 shadow-sm font-medium">Postman</span>
+                            <span class="skill-tag px-3 py-1.5 bg-white dark:bg-brand-gray border border-gray-200 dark:border-gray-800 rounded-md text-sm text-gray-700 dark:text-gray-300 shadow-sm font-medium">Git / Maven</span>
+                            <span class="skill-tag px-3 py-1.5 bg-white dark:bg-brand-gray border border-gray-200 dark:border-gray-800 rounded-md text-sm text-gray-700 dark:text-gray-300 shadow-sm font-medium">JIRA</span>
+                            <span class="skill-tag px-3 py-1.5 bg-white dark:bg-brand-gray border border-gray-200 dark:border-gray-800 rounded-md text-sm text-gray-700 dark:text-gray-300 shadow-sm font-medium">OOP / Data Structures</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white dark:bg-brand-dark transition-colors duration-300 border-y border-gray-100 dark:border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-brand-orange font-medium tracking-widest text-sm uppercase mb-2 text-center">Portfolio</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white transition-colors reveal">My <span class="text-brand-orange">Projects</span></h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-10">
+                <div class="bg-slate-50 dark:bg-[#0a0a0a] p-8 md:p-10 rounded-3xl border border-gray-200 dark:border-gray-800 hover:border-brand-orange/60 dark:hover:border-brand-orange/50 transition-all duration-300 group hover:-translate-y-2 hover:shadow-xl dark:hover:shadow-neon reveal relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-orange/5 rounded-bl-[100px] transition-all duration-500 group-hover:bg-brand-orange/10"></div>
+                    
+                    <h3 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white group-hover:gradient-text transition-colors font-heading relative z-10">Elevate Connect</h3>
+                    <p class="text-sm text-brand-orange font-semibold mb-5 tracking-wide relative z-10">Full Stack (Java, Spring Boot, React) • August 2025</p>
+                    <ul class="text-gray-600 dark:text-brand-text mb-6 space-y-3 relative z-10 list-disc pl-5 marker:text-brand-orange">
+                        <li>Designed a communication platform to streamline team interactions through automation and intelligent data connectivity.</li>
+                        <li>Integrated RESTful APIs and optimized database queries for a seamless user experience.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-[#0a0a0a] p-8 md:p-10 rounded-3xl border border-gray-200 dark:border-gray-800 hover:border-brand-orange/60 dark:hover:border-brand-orange/50 transition-all duration-300 group hover:-translate-y-2 hover:shadow-xl dark:hover:shadow-neon reveal relative overflow-hidden" style="transition-delay: 200ms;">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-orange/5 rounded-bl-[100px] transition-all duration-500 group-hover:bg-brand-orange/10"></div>
+
+                    <h3 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white group-hover:gradient-text transition-colors font-heading relative z-10">Mobile Payment System</h3>
+                    <p class="text-sm text-brand-orange font-semibold mb-5 tracking-wide relative z-10">ASP.NET Core MVC • January 2026</p>
+                    <ul class="text-gray-600 dark:text-brand-text mb-6 space-y-3 relative z-10 list-disc pl-5 marker:text-brand-orange">
+                        <li>Developed a Mobile Payment System using ASP.NET Core MVC and SQL Server enabling secure user registration, wallet management, and peer-to-peer money transfers.</li>
+                        <li>Implemented transaction validation, balance updates, and maintained history using Entity Framework Core. Followed MVC architecture for clean code.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-slate-50 dark:bg-brand-darker transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-brand-orange font-medium tracking-widest text-sm uppercase mb-2 text-center">Background</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white transition-colors reveal">Education <span class="text-brand-orange">& Certifications</span></h2>
+            
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
+                <!-- Education Column -->
+                <div class="reveal">
+                    <h3 class="text-2xl font-bold mb-10 flex items-center text-gray-900 dark:text-white transition-colors font-heading">
+                        <span class="w-10 h-10 rounded-full bg-orange-100 dark:bg-brand-orange/10 flex items-center justify-center mr-4">
+                            <i class="fas fa-graduation-cap text-brand-orange text-xl"></i>
+                        </span> My Education
+                    </h3>
+                    <div class="space-y-10 border-l-[2px] border-brand-orange/30 pl-8 ml-5 relative">
+                        
+                        <div class="relative group">
+                            <span class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-brand-orange ring-[4px] ring-slate-50 dark:ring-brand-darker transition-colors transform group-hover:scale-125 duration-300"></span>
+                            <span class="text-brand-orange font-bold text-xs tracking-widest uppercase bg-orange-100 dark:bg-brand-orange/10 px-3 py-1 rounded-full mb-2 inline-block">Aug 2025 – Feb 2026</span>
+                            <h4 class="text-xl font-bold text-gray-900 dark:text-white mt-2 transition-colors">C-DAC (Centre for Development of Advanced Computing)</h4>
+                            <p class="text-gray-700 dark:text-gray-400 mt-1 font-medium transition-colors">Post Graduate Diploma in Advanced Computing</p>
+                            <p class="text-gray-500 dark:text-gray-500 text-sm mt-1 transition-colors"><i class="fas fa-map-marker-alt mr-1"></i> Nashik, India</p>
+                        </div>
+                        
+                        <div class="relative group">
+                            <span class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-brand-orange ring-[4px] ring-slate-50 dark:ring-brand-darker transition-colors transform group-hover:scale-125 duration-300"></span>
+                            <span class="text-gray-500 dark:text-gray-400 font-bold text-xs tracking-widest uppercase mb-2 inline-block transition-colors">Sept 2020 – May 2024</span>
+                            <h4 class="text-xl font-bold text-gray-900 dark:text-white mt-1 transition-colors">R. C. Patel Institute of Technology</h4>
+                            <p class="text-gray-700 dark:text-gray-400 mt-1 font-medium transition-colors">Bachelor of Technology in Electronics and Telecommunication</p>
+                            <span class="inline-block mt-3 text-sm font-bold bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-4 py-1.5 rounded-md border border-gray-200 dark:border-gray-700">CGPA: 7.04/10</span>
+                        </div>
+                        
+                        <div class="relative group">
+                            <span class="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-brand-orange ring-[4px] ring-slate-50 dark:ring-brand-darker transition-colors transform group-hover:scale-125 duration-300"></span>
+                            <span class="text-gray-500 dark:text-gray-400 font-bold text-xs tracking-widest uppercase mb-2 inline-block transition-colors">Nov 2018 – July 2020</span>
+                            <h4 class="text-xl font-bold text-gray-900 dark:text-white mt-1 transition-colors">H. R. Patel Junior College</h4>
+                            <p class="text-gray-700 dark:text-gray-400 mt-1 font-medium transition-colors">Higher Secondary Certificate (HSC)</p>
+                            <span class="inline-block mt-3 text-sm font-bold bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-4 py-1.5 rounded-md border border-gray-200 dark:border-gray-700">Percentage: 84.92%</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Certifications Column -->
+                <div class="reveal" style="transition-delay: 200ms;">
+                    <h3 class="text-2xl font-bold mb-10 flex items-center text-gray-900 dark:text-white transition-colors font-heading">
+                        <span class="w-10 h-10 rounded-full bg-orange-100 dark:bg-brand-orange/10 flex items-center justify-center mr-4">
+                            <i class="fas fa-certificate text-brand-orange text-xl"></i>
+                        </span> Training Programs
+                    </h3>
+                    <div class="space-y-5">
+                        <div class="bg-white dark:bg-brand-gray p-6 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm hover:border-brand-orange dark:hover:border-brand-orange/50 transition-all duration-300 transform hover:-translate-x-2 border-l-4 border-l-brand-orange group">
+                            <h4 class="font-bold text-lg text-gray-900 dark:text-white transition-colors group-hover:text-brand-orange">Java Full-stack Development</h4>
+                            <p class="text-gray-600 dark:text-gray-400 mt-1 text-sm transition-colors flex items-center mt-2"><i class="fas fa-building mr-2 text-gray-400"></i> Symbiosis Skills and Professional University</p>
+                        </div>
+                        <div class="bg-white dark:bg-brand-gray p-6 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm hover:border-brand-orange dark:hover:border-brand-orange/50 transition-all duration-300 transform hover:-translate-x-2 border-l-4 border-l-brand-orange group">
+                            <h4 class="font-bold text-lg text-gray-900 dark:text-white transition-colors group-hover:text-brand-orange">Employability Skill Programme</h4>
+                            <p class="text-gray-600 dark:text-gray-400 mt-1 text-sm transition-colors flex items-center mt-2"><i class="fas fa-building mr-2 text-gray-400"></i> Tech Mahindra</p>
+                        </div>
+                        <div class="bg-white dark:bg-brand-gray p-6 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm hover:border-brand-orange dark:hover:border-brand-orange/50 transition-all duration-300 transform hover:-translate-x-2 border-l-4 border-l-brand-orange group">
+                            <h4 class="font-bold text-lg text-gray-900 dark:text-white transition-colors group-hover:text-brand-orange">Java Full Stack Development</h4>
+                            <p class="text-gray-600 dark:text-gray-400 mt-1 text-sm transition-colors flex items-center mt-2"><i class="fas fa-building mr-2 text-gray-400"></i> Velocity Training Centre</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-20 bg-white dark:bg-brand-dark transition-colors duration-300 border-y border-gray-100 dark:border-white/5 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-brand-orange font-medium tracking-widest text-sm uppercase mb-2 text-center">Milestones</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white transition-colors reveal">My <span class="text-brand-orange">Achievements</span></h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-slate-50 dark:bg-brand-gray p-8 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-brand-orange transition-all duration-300 group hover:-translate-y-2 hover:shadow-lg reveal text-center">
+                    <div class="w-16 h-16 rounded-full bg-orange-100 dark:bg-brand-orange/10 flex items-center justify-center mx-auto mb-6 text-brand-orange text-2xl group-hover:scale-110 transition-transform">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed transition-colors">
+                        Finished in the <strong class="text-brand-orange font-semibold">Top 10%</strong> of participants in the Brain Heist event during Converges 2023.
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-brand-gray p-8 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-brand-orange transition-all duration-300 group hover:-translate-y-2 hover:shadow-lg reveal text-center" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 rounded-full bg-orange-100 dark:bg-brand-orange/10 flex items-center justify-center mx-auto mb-6 text-brand-orange text-2xl group-hover:scale-110 transition-transform">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed transition-colors">
+                        Participated in the <strong class="text-brand-orange font-semibold">Innovation Project</strong> event at R.C. Patel Institute of Technology.
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-brand-gray p-8 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-brand-orange transition-all duration-300 group hover:-translate-y-2 hover:shadow-lg reveal text-center" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 rounded-full bg-orange-100 dark:bg-brand-orange/10 flex items-center justify-center mx-auto mb-6 text-brand-orange text-2xl group-hover:scale-110 transition-transform">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed transition-colors">
+                        Represented the state in <strong class="text-brand-orange font-semibold">National-Level Martial Arts</strong>, reaching the finals and earning recognition for technical expertise.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-slate-50 dark:bg-brand-darker transition-colors duration-300 relative overflow-hidden">
+        <!-- Background accents -->
+        <div class="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-orange to-transparent opacity-50"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <p class="text-brand-orange font-medium tracking-widest text-sm uppercase mb-2">Get in touch</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-gray-900 dark:text-white transition-colors">Contact <span class="text-brand-orange">Me</span></h2>
+            
+            <div class="bg-white dark:bg-[#0a0a0a] p-8 md:p-12 rounded-3xl border border-gray-200 dark:border-gray-800 shadow-xl dark:shadow-none transition-colors duration-300 relative">
+                <form action="https://formspree.io/f/xyyryoyk" method="POST" class="space-y-6 relative z-10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
+                        <div class="relative group">
+                            <span class="absolute left-4 top-4 text-gray-400 group-focus-within:text-brand-orange transition-colors"><i class="fas fa-user"></i></span>
+                            <input type="text" name="name" placeholder="Your Name" required class="w-full bg-slate-50 dark:bg-brand-darker border border-gray-300 dark:border-gray-700 rounded-xl pl-12 pr-5 py-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-orange/50 focus:border-brand-orange transition-all shadow-sm">
+                        </div>
+                        <div class="relative group">
+                            <span class="absolute left-4 top-4 text-gray-400 group-focus-within:text-brand-orange transition-colors"><i class="fas fa-envelope"></i></span>
+                            <input type="email" name="email" placeholder="Your Email" required class="w-full bg-slate-50 dark:bg-brand-darker border border-gray-300 dark:border-gray-700 rounded-xl pl-12 pr-5 py-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-orange/50 focus:border-brand-orange transition-all shadow-sm">
+                        </div>
+                    </div>
+                    <div class="relative group">
+                         <span class="absolute left-4 top-4 text-gray-400 group-focus-within:text-brand-orange transition-colors"><i class="fas fa-comment-alt"></i></span>
+                        <textarea name="message" rows="5" placeholder="Your Message" required class="w-full bg-slate-50 dark:bg-brand-darker border border-gray-300 dark:border-gray-700 rounded-xl pl-12 pr-5 py-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-orange/50 focus:border-brand-orange transition-all resize-none shadow-sm"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-brand-orange to-brand-orangeLight text-white rounded-xl font-bold text-lg hover:shadow-lg transition-all transform hover:-translate-y-1 shadow-light-neon dark:shadow-neon cursor-pointer mt-4">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-black transition-colors duration-300">
+        <div class="flex justify-center space-x-6 mb-4">
+            <a href="https://github.com" target="_blank" class="text-gray-400 hover:text-brand-orange transition-colors"><i class="fab fa-github text-xl"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="text-gray-400 hover:text-brand-orange transition-colors"><i class="fab fa-linkedin-in text-xl"></i></a>
+        </div>
+        <p class="text-gray-500 dark:text-gray-500 text-sm font-medium tracking-wide">© <span id="year"></span> <span class="text-brand-orange">Janhavi Mali</span>. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Set dynamic year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Theme Toggle Logic
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const themeToggleDarkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
+        const themeToggleLightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
+        
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleBtnMobile = document.getElementById('theme-toggle-mobile');
+
+        // Function to update icon visibility
+        function updateIcons(isDark) {
+            if (isDark) {
+                themeToggleLightIcon.classList.remove('hidden');
+                themeToggleDarkIcon.classList.add('hidden');
+                if(themeToggleLightIconMobile) themeToggleLightIconMobile.classList.remove('hidden');
+                if(themeToggleDarkIconMobile) themeToggleDarkIconMobile.classList.add('hidden');
+            } else {
+                themeToggleDarkIcon.classList.remove('hidden');
+                themeToggleLightIcon.classList.add('hidden');
+                if(themeToggleDarkIconMobile) themeToggleDarkIconMobile.classList.remove('hidden');
+                if(themeToggleLightIconMobile) themeToggleLightIconMobile.classList.add('hidden');
+            }
+        }
+
+        // Initialize Theme Based on LocalStorage or OS Preference
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            updateIcons(true);
+        } else {
+            document.documentElement.classList.remove('dark');
+            updateIcons(false);
+        }
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+                updateIcons(false);
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+                updateIcons(true);
+            }
+        }
+
+        if(themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+        if(themeToggleBtnMobile) themeToggleBtnMobile.addEventListener('click', toggleTheme);
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if(menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Hide mobile menu on link click
+            const mobileLinks = mobileMenu.querySelectorAll('.mobile-link');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+
+        // Scroll Reveal Animations
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 80; // slightly lower threshold for better mobile experience
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+
+            // Animate progress bars when skills section is visible
+            var skillsSection = document.getElementById("skills");
+            if(skillsSection) {
+                var windowHeight = window.innerHeight;
+                var skillsTop = skillsSection.getBoundingClientRect().top;
+                if(skillsTop < windowHeight - 100) {
+                    var progressBars = document.querySelectorAll(".progress-bar-fill");
+                    progressBars.forEach(bar => {
+                        bar.style.width = bar.getAttribute("data-width");
+                    });
+                }
+            }
+        }
+        
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load with a slight delay to ensure rendering completes
+        setTimeout(reveal, 100);
+    </script>
+</body>
+</html>
